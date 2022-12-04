@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #ebfffb;
+    background: #000000;
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -22,17 +22,17 @@ body {
 button {
     width: 508px;
     height: 508px;
-    background: #ff5858;
+    background: #fc0000;
     border-radius: 10px;
     border: none;
     cursor: pointer;
     padding: 30px;
-    color: aquamarine;
+    color: rgb(255, 255, 255);
     font-size: 200px;
     transition: .3s ease all;
 }
 
 button:hover {
-    background: #ff5858;
-    box-shadow: 3px 3px 50px rgba(0,0,0.15);
+    background: #fc0000;
+    box-shadow: 3px 3px 50px rgb(255, 255, 255);
 }
