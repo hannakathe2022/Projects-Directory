@@ -83,3 +83,28 @@ console.log(str6.padEnd(5,'x'))
 
 
 
+//EXTRAER CARACTERES
+
+let str7='HELLO WORLD'
+
+//.charAt()
+console.log(str7.charAt(6))
+
+//.charCodeAt()
+console.log(str7.charCodeAt(3))
+
+// Property access
+console.log(str7[0])
+
+
+
+//CONVIRTIENDO STRINGS EN ARRAYS
+
+let str8='a,b,c,d,e,f'
+
+//.split()
+console.log(str8.split(','))
+console.log(str8.split('|'))
+console.log(str8.split(' '))
+
+
