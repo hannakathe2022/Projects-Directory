@@ -1,16 +1,39 @@
-/*https://www.youtube.com/watch?v=bFvfqUMjvsA&t=1s*/
-
-
-/*IMPORT GOOGLE FONTS*/
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
+        /*=====GOOGLE FONTS=====*/
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    /*=====GENERAL=====*/
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
+:root{
+    /*=====LIGHT COLORS=====*/
+
+   --body-color: #e4e9f7;
+   --sidebar-color: #fff;
+   --primary-color: #695cfe;
+   --primary-color-light: #ebebeb;
+   --toggle-color: #cdcdcd;
+   --text-color: #606060;
+
+   /*=====TRANSICIONES=====*/
+
+   --tran-02: all 0.2s ease;
+   --tran-03: all 0.3s ease;
+   --tran-04: all 0.4s ease;
+   --tran-05: all 0.5s ease;
+}
+
+
+
+
+
+    /*==============*/
+    /*=====BODY=====*/
+    /*==============*/
+
 body{
     height: 100vh;
     background: var(--body-color);
@@ -18,14 +41,22 @@ body{
 }
 
 body::-webkit-scrollbar{
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
 }
 
 body::-webkit-scrollbar-thumb{
     background: var(--primary-color);
+    border-radius: 10px;
 }
 
+
+
+
+
+    /*===================*/
+    /*=====DARK MODE=====*/
+    /*===================*/
 
 body.dark{
     --body-color: #18191a;
@@ -36,28 +67,30 @@ body.dark{
     --text-color: #ccc;
 }
 
-:root{
-    /*=====COLORS=====*/
-
-    --body-color: #e4e9f7;
-    --sidebar-color: #fff;
-    --primary-color: #695cfe;
-    --primary-color-light: #f6f5ff;
-    --toggle-color: #ddd;
-    --text-color: #606060;
-
-    /*=====TRANSICIONES=====*/
-
-    /*Fluidez de transiciones*/
-
-    --tran-02: all 0.2s ease;
-    --tran-03: all 0.3s ease;
-    --tran-04: all 0.4s ease;
-    --tran-05: all 0.5s ease;
-
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
 }
 
-/*=====Sidebar=====*/
+body.dark li a:hover .icons,
+body.dark li a:hover .text{
+    color: var(--text-color)
+}
+   
+body.dark .menu-bar .mode i.sun{
+    opacity: 1;
+}
+body.dark .menu-bar .mode i.moon{
+    opacity: 0;
+}
+
+body.dark .switch::before{
+    left: 25px;
+}
+
+
+    /*=================*/
+    /*=====SIDEBAR=====*/
+    /*=================*/
 
 .sidebar{
     position: fixed;
@@ -71,11 +104,6 @@ body.dark{
     z-index: 100;
 }
 
-.sidebar.close{
-    width: 88px;
-}
-
-/*=====Resuable CSS=====*/
 .sidebar .text{
     font-size: 16px;
     font-weight: 500; /*FONT TYPE (MEDIUN 500)*/
@@ -84,11 +112,6 @@ body.dark{
     transition: var(--tran-03);
     white-space: nowrap;
     opacity: 1;
-
-}
-
-.sidebar.close .text{
-    opacity: 0;
 }
 
 .sidebar .image{
@@ -114,41 +137,43 @@ body.dark{
     align-items: center;
 }
 
+.sidebar li a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    outline: none;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: var(--tran-04);
+}
+
+.sidebar li a:hover{
+    background: var(--primary-color);
+}
+
+.sidebar li a:hover .icons,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+
 .sidebar li .icons,
 .sidebar li .text{
     color: var(--text-color);
     transition: var(--tran-02); 
 }
 
-.sidebar header{
-    position: relative;
-}
-
 .sidebar .image-text .image img{   
     width: 60px;
+}
+
+.sidebar header{
+    position: relative;
 }
 
 .sidebar header .image-text{
     display: flex;
     align-items: center;
-}
-
-header .image-text .header-text{
-    display: flex;
-    flex-direction: column;
-}
-
-.header-text .name{
-    font-size: 16px;
-    font-weight: 700; /*FONT TYPE (MEDIUN 500)*/
-    margin-left: 30px;
-}
-
-.header-text .profession{
-    padding: 7px;
-    margin-top: -2px;
-    margin-left: 30px;
-    font-weight: 500; 
 }
 
 .sidebar header .toggle{
@@ -163,22 +188,21 @@ header .image-text .header-text{
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: var(--sidebar-color);
     font-size: 20px;
     transition: var(--tran-03);
     cursor: pointer;
     transform: rotate(180deg);
 }
 
-.sidebar.close header .toggle{
-    transform: translateY(-50%);
-}
-body.dark .sidebar header .toggle{
-    color: var(--text-color);
-}
-
 .sidebar .menu{
     margin-top: 35px;
+}
+
+.sidebar .menu-bar{
+    height: 89%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .sidebar .search-box{
@@ -200,37 +224,77 @@ body.dark .sidebar header .toggle{
     font-weight: 500;
 }
 
-.sidebar li a{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    outline: none;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: var(--tran-04);
+
+    /*=======================*/
+    /*=====SIDEBAR CLOSE=====*/
+    /*=======================*/
+
+
+.sidebar.close{
+    width: 88px;
 }
 
-.sidebar li a:hover{
-    background: var(--primary-color);
-}
-.sidebar li a:hover .icons,
-.sidebar li a:hover .text{
-    color: var(--sidebar-color);
-}
-body.dark li a:hover .icons,
-body.dark li a:hover .text{
-    color: var(--text-color)
+.sidebar.close .text{
+    opacity: 0;
 }
 
-/*MODO DE LA PAGINA ANIMACION Y UBICACION*/
+.sidebar.close header .toggle{
+    transform: translateY(-50%);
+}
 
-.sidebar .menu-bar{
-    height: 89%;
+
+
+    /*================*/
+    /*=====HEADER=====*/
+    /*================*/
+
+header .image-text .header-text{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
+
+.header-text .name{
+    font-size: 16px;
+    font-weight: 700; /*FONT TYPE (MEDIUN 500)*/
+    margin-left: 30px;
+}
+
+.header-text .profession{
+    padding: 7px;
+    margin-top: -2px;
+    margin-left: 30px;
+    font-weight: 500; 
+}
+
+
+
+
+    /*================*/
+    /*=====TOGGLE=====*/
+    /*================*/
+ .toggle-switch .switch{
+     position: relative;
+     height: 22px;
+     width: 44px;
+     border-radius: 25px;
+     background: var(--toggle-color);
+ }
+ 
+ .switch::before{
+     content: '';
+     position: absolute;
+     border-radius: 50%;
+     top: 50%;
+     left: 5px;
+     transform: translateY(-50%);
+     height: 15px;
+     width: 15px;
+     background: var(--sidebar-color);
+     transition: var(--tran-03);
+ }
+     /*=====MENU BAR=====*/
+     /*==================*/
+     /*==================*/
 
 .menu-bar .mode{
     position: relative;
@@ -254,13 +318,6 @@ body.dark li a:hover .text{
     opacity: 0;
 }
 
-body.dark .menu-bar .mode i.sun{
-    opacity: 1;
-}
-body.dark .menu-bar .mode i.moon{
-    opacity: 0;
-}
-
 .menu-bar .mode .toggle-switch{
     position: absolute;
     align-items: center;
@@ -272,57 +329,158 @@ body.dark .menu-bar .mode i.moon{
     cursor: pointer;
     background: var(--primary-color-light);
     border-radius: 6px;
-    /*transition: var(--tran-05);*/
 }
 
-.toggle-switch .switch{
-    position: relative;
-    height: 22px;
-    width: 44px;
-    border-radius: 25px;
-    background: var(--toggle-color);
-}
-.switch::before{
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    height: 15px;
-    width: 15px;
-    background: var(--sidebar-color);
-    transition: var(--tran-03);
-}
 
-/*DARK MODE*/
 
-body.dark .switch::before{
-    left: 25px;
-}
 
-/*PAGE ONE*/
-.home{
+
+    /*===============*/
+    /*=====PAGES=====*/
+    /*===============*/
+
+
+    /*DASHBOARD*/
+
+.Dashboard{
     position: relative;
     left: 250px;
-    height: 100vh;
+    height: 100%;
     width: calc(100%-250px);
-    background: var(--body-color);
+    background: red;
     transition: var(--tran-05);
-}
 
-.home .text{
     font-size: 30px;
     font-weight: 500;
     color: var(--text-color);
     padding: 8px 40px;
-}
-
-.sidebar.close ~ .home{
+}.sidebar.close ~ .Dashboard{
     left: 88px;
     width: calc(100%-88px);
 }
 
-.sidebar.close::-webkit-scrollbar{
-    width: 7px;
+
+
+    /*SHOES*/
+
+.Shoes{
+    position: relative;
+    left: 250px;
+    height: 100%;
+    width: calc(100%-250px);
+    background: blue;
+    transition: var(--tran-05);
+
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}.sidebar.close ~ .Shoes{
+    left: 88px;
+    width: calc(100%-88px);
+}
+
+
+
+    /*CLOTHES*/
+
+.Clothes{
+    position: relative;
+    left: 250px;
+    height: 100%;
+    width: calc(100%-250px);
+    background: rgb(34, 255, 0);
+    transition: var(--tran-05);
+
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}.sidebar.close ~ .Clothes{
+    left: 88px;
+    width: calc(100%-88px);
+}
+
+
+
+    /*ACCESORIES*/
+
+.Accesories{
+    position: relative;
+    left: 250px;
+    height: 100%;
+    width: calc(100%-250px);
+    background: rgb(234, 0, 255);
+    transition: var(--tran-05);
+
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}.sidebar.close ~ .Accesories{
+    left: 88px;
+    width: calc(100%-88px);
+}
+
+
+
+    /*ACCESORIES*/
+
+.Sports{
+    position: relative;
+    left: 250px;
+    height: 100%;
+    width: calc(100%-250px);
+    background: rgb(0, 234, 255);
+    transition: var(--tran-05);
+
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}.sidebar.close ~ .Sports{
+    left: 88px;
+    width: calc(100%-88px);
+}
+
+
+
+    /*ONLINE STORE*/
+
+.Online-Store{
+    position: relative;
+    left: 250px;
+    height: 100%;
+    width: calc(100%-250px);
+    background: rgb(255, 94, 0);
+    transition: var(--tran-05);
+
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}.sidebar.close ~ .Online-Store{
+    left: 88px;
+    width: calc(100%-88px);
+}
+
+
+
+    /*SOCIAL NETWORKS*/
+
+.Social-Networws{
+    position: relative;
+    left: 250px;
+    height: 100%;
+    width: calc(100%-250px);
+    background: gray;
+    transition: var(--tran-05);
+
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}.sidebar.close ~ .Social-Networws{
+    left: 88px;
+    width: calc(100%-88px);
 }
